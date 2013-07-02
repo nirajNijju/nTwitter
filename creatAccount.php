@@ -12,8 +12,14 @@ session_start();
  $password=$_POST['password'];
  $password2=$_POST['password2'];
 
+ $userName=trim($userName);
+ $password=trim($password);
+ $password2=trim($password2);
+  
  
- if(!$userName  || !$password || !$password2){
+ if(strlen($userName) <2  || strlen($password)<2){
+ 	header("location:login.php/?retry=6");
+ }else if(!$userName  || !$password || !$password2){
  	header("location:login.php/?retry=4");
  }else if($password != $password2){
  	header("location:login.php/?retry=3");

@@ -3,6 +3,8 @@
 session_start();
 
  include 'selectDB.php';
+ require "predis/autoload.php";
+ Predis\Autoloader::register();
  /*
  $loginDB=13;
  $followingDB =10;
@@ -12,20 +14,23 @@ session_start();
  $userName=$_POST['userName'];
  $password=$_POST['password'];
 
+ $userName=trim($userName);
+ $password=trim($password);
+
+ echo strlen($userName);
+ echo strlen($password);
  echo $userName;
  echo $password;
- if(!$userName  || !$password){
- 	header("location:index.php/?retry=1");
- }
 
-
-require "predis/autoload.php";
-Predis\Autoloader::register();
+ if(strlen($userName) <2  || strlen($password)<2){
+ 	header("location:login.php/?retry=6");
+ }else if(!$userName  || !$password){
+ 	header("location:login.php/?retry=1");
+ }else {
 
 try {
-    $redis = new Predis\Client();
-    
 
+ $redis = new Predis\Client();
  $redis->connect('127.0.0.1', 6379);
 
  $redis->select($loginDB);
@@ -54,5 +59,5 @@ catch (Exception $e) {
     echo $e->getMessage();
 }
 
-
+}  // end of else
 ?>

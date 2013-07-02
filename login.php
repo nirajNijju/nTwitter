@@ -25,8 +25,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<!--<link rel="stylesheet/less" href="style.less">
-	<script src="less.js"></script>-->
+
 </head>
 <body>
 
@@ -55,6 +54,9 @@ session_start();
  if($retry==5){
   echo "<center><font color=blue ><b>Account successfully created</b></font></center><br />";
  }
+ if($retry==6){
+  echo "<center><font color=red ><b>Both Username and Password should be of length more than 2</b></font></center><br />";
+ }
 ?>
 
 			<div class="panel right" align="center">
@@ -68,9 +70,6 @@ session_start();
 					</form>
 				</p>
 			</div>
-<!--
-		</div>
-	</div>
--->
+
 </body>
 </html>

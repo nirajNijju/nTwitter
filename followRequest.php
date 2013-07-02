@@ -23,7 +23,7 @@
   $redis->connect('127.0.0.1', 6379);
   $redis->select($followingDB);
   $redis->sAdd($userName, $followTo);
-  $_SESSION['followingCount'] = $followingCount+1;
+  $_SESSION['followingCount'] = $_SESSION['followingCount']+1;
 
   $redis->select($followersDB);
   $redis->sAdd($followTo, $userName);

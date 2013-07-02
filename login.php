@@ -11,7 +11,11 @@ session_start();
  if($retry > 0){
  	header('Refresh: 5; URL=http://localhost/nTwitter/login.php');
  }
-  
+/*
+ if($retry > 0){
+        header('Refresh: 5; URL=http://ec2-54-224-194-128.compute-1.amazonaws.com/nTwitter/login.php');
+ } 
+*/ 
  if($retry==1){
   echo "<center><font color=red >Wrong Username or Password</font></center><br />";
  }
@@ -40,16 +44,16 @@ session_start();
 
 <?php			
  if($retry==2){
-  echo "<center><font color=red >Username already exist</font></center><br />";
+  echo "<center><font color=red ><b>Username already exist</b></font></center><br />";
  }
  if($retry==3){
-  echo "<center><font color=red >password doesn't match</font></center><br />";
+  echo "<center><font color=red ><b>password doesn't match</b></font></center><br />";
  }
  if($retry==4){
-  echo "<center><font color=red >Missing Details</font></center><br />";
+  echo "<center><font color=red ><b>Missing Details</font></b></center><br />";
  }
  if($retry==5){
-  echo "<center><font color=blue >Account successfully created</font></center><br />";
+  echo "<center><font color=blue ><b>Account successfully created</b></font></center><br />";
  }
 ?>
 

@@ -7,10 +7,8 @@
  
  $userName = $_SESSION['userName'];
  $userSearch=$_POST['userSearch'];
-// echo $userSearch;
- $loginDB=13;
- $followingDB =10;
- 
+
+ include 'selectDB.php';
  require "predis/autoload.php";
  Predis\Autoloader::register(); 
 
@@ -32,37 +30,13 @@
   $nonFollowing2=array_diff($usersArray2,$folloing2);
   
   $count =0;
-  
- // echo sizeof($folloing1)+sizeof($folloing2)." users you are following \n";
- // echo sizeof($nonFollowing1)+sizeof($nonFollowing2)." users you are not following";
-  
-  
-  /*
-  foreach ($folloing1 as $value)  {
-    echo $value."   ";
-    $count++;
-  }
-  foreach ($folloing2 as $value)  {
-    echo $value."   ";
-    $count++;
-  }
-  foreach ($nonFollowing1 as $value)  {
-    echo $value."   ";
-    $count++;
-  }
-  foreach ($nonFollowing2 as $value)  {
-    echo $value."   ";
-    $count++;
-  }
-  echo "  count:".$count;
-  */
+ 
  }
  catch (Exception $e) {
     echo "Couldn't connected to Redis";
     echo $e->getMessage();
  }
 
- 
 ?>
 
 <html>
@@ -74,7 +48,7 @@
  <caption>Search Result for "<?php echo $userSearch ?>"</caption>
  <?php
    foreach ($folloing1 as $value)  {
-    echo "<tr><td>".$value."<font size=\"1\"><i> following</i></font></p></td></tr>   ";
+    echo "<tr><td>".$value."<font size=\"1\"><i> following</i></font></td></tr>   ";
     $count++;
   }
   foreach ($folloing2 as $value)  {
@@ -89,12 +63,8 @@
     echo "<tr><td>".$value."<font size=\"1\"><i><a href =\"followRequest.php/?follow=".$value."\"> follow</a></i></font></td></tr>   ";
     $count++;
   }
-  
-  
  
  ?>
  </table>
-
-
 </body>
 </html>

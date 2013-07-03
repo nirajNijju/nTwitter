@@ -11,9 +11,7 @@
  require "predis/autoload.php";
  Predis\Autoloader::register();
  
- 
 ?>
-
 
 <html>
 <head><title><?php echo $userName." | nTwitter" ?></title></head>
@@ -69,7 +67,6 @@
     	$tweet = $tweet."|".$tweetArray[$i];
     }
     
-    
     echo "<tr><td>";
     echo "<font color=\"blue\" >".$user."</font><font size=1><i>".$timelag."</i></font><br />";
     echo "<p align=\"left\">".$tweet."</p>";
@@ -77,11 +74,6 @@
     
   }
 
-  
-  
-  
-  
-   
 }
 catch (Exception $e) {
     echo "Couldn't connected to Redis";
@@ -91,7 +83,5 @@ catch (Exception $e) {
  ?> 
  
 </table>
-
 </body>
-
 </html>

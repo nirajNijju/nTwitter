@@ -22,9 +22,11 @@ try {
  $redis->connect('127.0.0.1', 6379);
 
  $redis->select($post);
- $postId = $redis->incr($postId);
+ //echo "1";
+ $postId = $redis->incr("postId");
  $redis->set($postId,$tweetString);
  
+ echo "1";
  $redis->select($userPost);
  $redis->lPush($userName, $postId);
  
